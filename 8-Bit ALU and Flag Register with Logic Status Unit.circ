@@ -171,7 +171,7 @@
     </comp>
     <comp lib="6" loc="(1070,590)" name="LED">
       <a name="color" val="#20f0e8"/>
-      <a name="label" val="Negetive_Flag"/>
+      <a name="label" val="Negative_Flag"/>
     </comp>
     <comp lib="6" loc="(1070,630)" name="LED">
       <a name="color" val="#e5f035"/>
