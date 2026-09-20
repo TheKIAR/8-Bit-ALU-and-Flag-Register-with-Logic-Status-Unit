@@ -1,29 +1,64 @@
 # 8-Bit ALU and Flag Register
 
-8-bit Arithmetic Logic Unit simulated in Logisim Evolution 4.1.0.
+A Logisim Evolution digital-logic project implementing an 8-bit ALU with four selectable operations and a 4-bit status/flag register.
 
 ## Operations
 
-| Selector | Operation |
-|---|---|
-| 00 | ADD |
-| 01 | SUB |
-| 10 | AND |
-| 11 | OR |
+| Selector | Operation | Description |
+|---|---|---|
+| `00` | ADD | A + B |
+| `01` | SUB | A - B |
+| `10` | AND | A AND B |
+| `11` | OR | A OR B |
 
 ## Inputs
 
-- A: 8-bit
-- B: 8-bit
-- Selector: 2-bit
-- Result: 8-bit
+- 8-bit operand **A**
+- 8-bit operand **B**
+- 2-bit operation selector
 
 ## Flags
 
-Zero, Carry, Negative and Parity flags are stored in a 4-bit register.
+The status register exposes:
+
+- **Zero** — result is 0
+- **Carry** — carry/borrow-related arithmetic status
+- **Negative** — result has its most-significant bit set
+- **Parity** — result parity status
+
+## Example Tests
+
+| A | B | Operation | Expected result |
+|---:|---:|---|---:|
+| 5 | 3 | ADD | 8 |
+| 8 | 3 | SUB | 5 |
+| 170 | 240 | AND | 160 |
+| 170 | 15 | OR | 175 |
+
+For portfolio demonstrations, also test a zero result, an arithmetic carry/borrow case, an MSB-set result, and both even- and odd-parity results.
+
+## Tool
+
+Built with **Logisim Evolution**.
+
+Open:
+
+`8-Bit ALU and Flag Register with Logic Status Unit.circ`
 
 ## Portfolio Focus
 
-Digital Logic Design, ALU architecture, arithmetic and logical operations, multiplexing, status flags and registers.
+This project demonstrates:
 
-Open the Logisim Evolution circuit file with version 4.1.0 or a compatible version.
+- Combinational digital logic
+- ALU design
+- Arithmetic and bitwise operations
+- Multiplexer/control selection
+- Status/flag generation
+- Digital-circuit simulation
+
+## Future Improvements
+
+- Add a labeled circuit screenshot
+- Add a test/demo GIF
+- Document the exact flag truth tables
+- Add more arithmetic operations such as increment/decrement
