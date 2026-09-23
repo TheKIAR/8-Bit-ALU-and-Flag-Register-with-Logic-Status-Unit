@@ -1,0 +1,40 @@
+name: Circuit Runtime Screenshot
+
+on:
+  push:
+    paths-ignore:
+      - "assets/runtime-screenshot.png"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Install capture tools
+        run: sudo apt-get update && sudo apt-get install -y xvfb imagemagick wget
+      - name: Download Logisim-evolution
+        run: |
+          wget -q https://github.com/logisim-evolution/logisim-evolution/releases/download/v5.0.0/logisim-evolution-5.0.0-all.jar -O logisim-evolution.jar
+      - name: Open circuit and capture runtime screenshot
+        run: |
+          mkdir -p assets
+          (_JAVA_AWT_WM_NONREPARENTING=1 xvfb-run -a -s "-screen 0 1600x1000x24" java -jar logisim-evolution.jar --no-splash "8-Bit ALU and Flag Register with Logic Status Unit.circ" > /tmp/logisim.log 2>&1 & echo $! > /tmp/logisim.pid)
+          sleep 8
+          xvfb-run -a -s "-screen 0 1600x1000x24" true
+          import -window root assets/runtime-screenshot.png
+          kill $(cat /tmp/logisim.pid) || true
+      - name: Commit runtime screenshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/runtime-screenshot.png
+          git diff --cached --quiet || git commit -m "Add actual Logisim runtime screenshot"
+          git push
