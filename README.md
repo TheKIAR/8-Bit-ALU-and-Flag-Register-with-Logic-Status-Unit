@@ -1,5 +1,8 @@
 # 8-Bit ALU and Flag Register
 
+> Digital-logic portfolio project built and simulated in Logisim Evolution.
+
+
 A Logisim Evolution digital-logic project implementing an 8-bit ALU with four selectable operations and a 4-bit status/flag register.
 
 ## Operations
