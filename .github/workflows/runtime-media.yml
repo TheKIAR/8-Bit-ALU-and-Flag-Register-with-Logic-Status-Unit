@@ -25,12 +25,14 @@ jobs:
           wget -q https://github.com/logisim-evolution/logisim-evolution/releases/download/v5.0.0/logisim-evolution-5.0.0-all.jar -O logisim-evolution.jar
       - name: Open circuit and capture runtime screenshot
         run: |
-          mkdir -p assets
-          (_JAVA_AWT_WM_NONREPARENTING=1 xvfb-run -a -s "-screen 0 1600x1000x24" java -jar logisim-evolution.jar --no-splash "8-Bit ALU and Flag Register with Logic Status Unit.circ" > /tmp/logisim.log 2>&1 & echo $! > /tmp/logisim.pid)
-          sleep 8
-          xvfb-run -a -s "-screen 0 1600x1000x24" true
-          import -window root assets/runtime-screenshot.png
-          kill $(cat /tmp/logisim.pid) || true
+          xvfb-run -a -s "-screen 0 1600x1000x24" bash -lc '
+            export _JAVA_AWT_WM_NONREPARENTING=1
+            java -jar logisim-evolution.jar --no-splash "8-Bit ALU and Flag Register with Logic Status Unit.circ" >/tmp/logisim.log 2>&1 &
+            pid=$!
+            sleep 8
+            import -window root assets/runtime-screenshot.png
+            kill "$pid" || true
+          '
       - name: Commit runtime screenshot
         run: |
           git config user.name "github-actions[bot]"
