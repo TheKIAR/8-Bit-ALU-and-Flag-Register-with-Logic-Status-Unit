@@ -1,6 +1,6 @@
 # 8-Bit ALU and Flag Register
 
-![Project Preview](assets/project-preview.svg)
+![Logisim Runtime Screenshot](assets/runtime-screenshot.png)
 > Digital-logic portfolio project built and simulated in Logisim Evolution.
 
 
