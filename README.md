@@ -62,3 +62,14 @@ This project demonstrates:
 - Add a test/demo GIF
 - Document the exact flag truth tables
 - Add more arithmetic operations such as increment/decrement
+
+
+## 🌐 Links
+
+**Portfolio:** https://ragibashhab.netlify.app/
+
+**GitHub:** https://github.com/TheKIAR
+
+**LinkedIn:** https://www.linkedin.com/in/md-ragib-ashhab-768a19240/
+
+**Linktree:** https://linktr.ee/RagibAshhab
