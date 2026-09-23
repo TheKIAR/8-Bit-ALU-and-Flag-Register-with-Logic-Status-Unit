@@ -1,5 +1,10 @@
 # 8-Bit ALU and Flag Register
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/TheKIAR/8-Bit-ALU-and-Flag-Register-with-Logic-Status-Unit/main/assets/runtime-screenshot.png" alt="8-Bit ALU Logisim runtime screenshot" width="1000">
+</p>
+
+
 ![Logisim Runtime Screenshot](assets/runtime-screenshot.png)
 > Digital-logic portfolio project built and simulated in Logisim Evolution.
 
