@@ -2,7 +2,12 @@
 
 <p align="center"><strong>Logisim Evolution • Digital Logic • Computer Architecture</strong><br><em>An 8-bit ALU designed and simulated from fundamental digital-logic building blocks.</em></p>
 
-<p align="center"><a href="https://github.com/TheKIAR/8-Bit-ALU-and-Flag-Register-with-Logic-Status-Unit"><img src="https://github.com/TheKIAR/8-Bit-ALU-and-Flag-Register-with-Logic-Status-Unit/blob/main/assets/runtime-screenshot.png?raw=true" alt="8-Bit ALU Logisim runtime" width="920"></a></p>
+<p align="center"><a href="https://github.com/TheKIAR/8-Bit-ALU-and-Flag-Register-with-Logic-Status-Unit"><img src="./assets/runtime-screenshot.png" alt="8-Bit ALU Logisim runtime" width="920"></a></p>
+<p align="center"><img src="https://github.com/TheKIAR/8-Bit-ALU-and-Flag-Register-with-Logic-Status-Unit/actions/workflows/runtime-media.yml/badge.svg" alt="Circuit Runtime Screenshot"></p>
+
+## 🖥️ Live circuit preview
+
+The screenshot is generated automatically from the current Logisim Evolution circuit by GitHub Actions.
 
 > 💡 A compact demonstration of arithmetic, bitwise operations, control selection and processor-style status flags.
 
