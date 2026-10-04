@@ -19,7 +19,7 @@ jobs:
           distribution: temurin
           java-version: "21"
       - name: Install capture tools
-        run: sudo apt-get update && sudo apt-get install -y xvfb imagemagick wget
+        run: sudo apt-get update && sudo apt-get install -y xvfb imagemagick wget xdotool
       - name: Download Logisim-evolution
         run: |
           wget -q https://github.com/logisim-evolution/logisim-evolution/releases/download/v5.0.0/logisim-evolution-5.0.0-all.jar -O logisim-evolution.jar
@@ -27,11 +27,26 @@ jobs:
         run: |
           xvfb-run -a -s "-screen 0 1600x1000x24" bash -lc '
             export _JAVA_AWT_WM_NONREPARENTING=1
-            java -jar logisim-evolution.jar --no-splash "8-Bit ALU and Flag Register with Logic Status Unit.circ" >/tmp/logisim.log 2>&1 &
+            java -jar logisim-evolution.jar --no-splash --geometry 1600x1000+0+0 "8-Bit ALU and Flag Register with Logic Status Unit.circ" >/tmp/logisim.log 2>&1 &
             pid=$!
-            sleep 8
-            import -window root assets/runtime-screenshot.png
+            sleep 10
+            window_id=$(xdotool search --onlyvisible --class "Logisim" 2>/dev/null | head -n 1 || true)
+            if [ -z "$window_id" ]; then
+              window_id=$(xdotool search --onlyvisible --name "8-Bit ALU" 2>/dev/null | head -n 1 || true)
+            fi
+            if [ -z "$window_id" ]; then
+              echo "Could not find the Logisim window."
+              cat /tmp/logisim.log
+              kill "$pid" || true
+              exit 1
+            fi
+            import -window "$window_id" assets/runtime-screenshot.png
+            identify -format "Captured %wx%h\\n" assets/runtime-screenshot.png
             kill "$pid" || true
+            if [ ! -s assets/runtime-screenshot.png ]; then
+              echo "Screenshot was empty."
+              exit 1
+            fi
           '
       - name: Commit runtime screenshot
         run: |
