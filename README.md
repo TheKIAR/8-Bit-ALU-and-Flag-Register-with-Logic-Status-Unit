@@ -1,84 +1,92 @@
-# 8-Bit ALU and Flag Register
+# 🧮 8-Bit ALU & Flag Register
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/TheKIAR/8-Bit-ALU-and-Flag-Register-with-Logic-Status-Unit/main/assets/runtime-screenshot.png" alt="8-Bit ALU Logisim runtime screenshot" width="1000">
+  <img src="assets/runtime-screenshot.png" alt="8-Bit ALU Logisim runtime" width="950">
 </p>
 
+<p align="center">
+  <strong>Logisim Evolution • Digital Logic • Computer Architecture</strong><br>
+  An interactive 8-bit arithmetic and logic unit with a 4-bit status register.
+</p>
 
-![Logisim Runtime Screenshot](assets/runtime-screenshot.png)
-> Digital-logic portfolio project built and simulated in Logisim Evolution.
+<p align="center">
+  <img src="https://img.shields.io/badge/Logisim-Evolution-blue" alt="Logisim Evolution">
+  <img src="https://img.shields.io/badge/ALU-8--Bit-orange" alt="8-bit ALU">
+  <img src="https://img.shields.io/badge/Digital-Logic-green" alt="Digital Logic">
+</p>
 
+---
 
-A Logisim Evolution digital-logic project implementing an 8-bit ALU with four selectable operations and a 4-bit status/flag register.
+## 🧠 What is inside?
 
-## Operations
+The circuit implements four selectable operations and exposes useful status information — making it a compact demonstration of how an ALU can be assembled from digital logic.
 
-| Selector | Operation | Description |
+### ⚡ Operations
+
+| Selector | Operation | Result |
 |---|---|---|
 | `00` | ADD | A + B |
-| `01` | SUB | A - B |
+| `01` | SUB | A − B |
 | `10` | AND | A AND B |
 | `11` | OR | A OR B |
 
-## Inputs
+### 🔌 Inputs
 
-- 8-bit operand **A**
-- 8-bit operand **B**
-- 2-bit operation selector
+- **A** — 8-bit operand
+- **B** — 8-bit operand
+- **Selector** — 2-bit operation control
 
-## Flags
+### 🚦 Status flags
 
-The status register exposes:
+| Flag | Meaning |
+|---|---|
+| 🟢 **Zero** | Result equals 0 |
+| 🔄 **Carry** | Arithmetic carry / borrow-related status |
+| 🔴 **Negative** | Result MSB is set |
+| 🟣 **Parity** | Result parity status |
 
-- **Zero** — result is 0
-- **Carry** — carry/borrow-related arithmetic status
-- **Negative** — result has its most-significant bit set
-- **Parity** — result parity status
+## 🧪 Example tests
 
-## Example Tests
-
-| A | B | Operation | Expected result |
+| A | B | Operation | Expected |
 |---:|---:|---|---:|
 | 5 | 3 | ADD | 8 |
 | 8 | 3 | SUB | 5 |
 | 170 | 240 | AND | 160 |
 | 170 | 15 | OR | 175 |
 
-For portfolio demonstrations, also test a zero result, an arithmetic carry/borrow case, an MSB-set result, and both even- and odd-parity results.
+For a stronger demo, also test zero results, arithmetic carry/borrow cases, MSB-set results, and both even/odd parity.
 
-## Tool
+## 🖥️ Open the circuit
 
-Built with **Logisim Evolution**.
+Use **Logisim Evolution** and open:
 
-Open:
+```text
+8-Bit ALU and Flag Register with Logic Status Unit.circ
+```
 
-`8-Bit ALU and Flag Register with Logic Status Unit.circ`
-
-## Portfolio Focus
-
-This project demonstrates:
+## 🔧 What this project demonstrates
 
 - Combinational digital logic
-- ALU design
+- ALU architecture
 - Arithmetic and bitwise operations
 - Multiplexer/control selection
 - Status/flag generation
 - Digital-circuit simulation
 
-## Future Improvements
+## 🚀 Future upgrades
 
-- Add a labeled circuit screenshot
+- Add a labeled circuit diagram
 - Add a test/demo GIF
-- Document the exact flag truth tables
-- Add more arithmetic operations such as increment/decrement
+- Document exact flag truth tables
+- Add increment/decrement operations
+- Expand the ALU with additional arithmetic functions
 
+## 👋 Connect
 
-## 🌐 Links
+Built by **Md. Ragib Ashhab**.
 
-**Portfolio:** https://ragibashhab.netlify.app/
+🌐 [Portfolio](https://ragibashhab.netlify.app/) · 💼 [LinkedIn](https://www.linkedin.com/in/md-ragib-ashhab-768a19240/) · 🔗 [Linktree](https://linktr.ee/RagibAshhab) · 🐙 [GitHub](https://github.com/TheKIAR)
 
-**GitHub:** https://github.com/TheKIAR
+---
 
-**LinkedIn:** https://www.linkedin.com/in/md-ragib-ashhab-768a19240/
-
-**Linktree:** https://linktr.ee/RagibAshhab
+> **Understand the bits. Build the logic. See the architecture.**
