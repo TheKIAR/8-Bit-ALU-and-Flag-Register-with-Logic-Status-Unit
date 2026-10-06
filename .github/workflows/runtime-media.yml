@@ -30,17 +30,21 @@ jobs:
             java -jar logisim-evolution.jar --no-splash --geometry 1600x1000+0+0 "8-Bit ALU and Flag Register with Logic Status Unit.circ" >/tmp/logisim.log 2>&1 &
             pid=$!
             sleep 10
-            window_id=$(xdotool search --onlyvisible --class "Logisim" 2>/dev/null | head -n 1 || true)
+            window_id=$(xdotool search --onlyvisible --name "Logisim" 2>/dev/null | head -n 1 || true)
             if [ -z "$window_id" ]; then
               window_id=$(xdotool search --onlyvisible --name "8-Bit ALU" 2>/dev/null | head -n 1 || true)
             fi
             if [ -z "$window_id" ]; then
               echo "Could not find the Logisim window."
+              echo "Visible windows:"
+              xdotool search --onlyvisible --name "." getwindowname %@ 2>/dev/null || true
               cat /tmp/logisim.log
               kill "$pid" || true
               exit 1
             fi
-            import -window "$window_id" assets/runtime-screenshot.png
+            xdotool windowactivate --sync "$window_id"
+            sleep 2
+            import -window root assets/runtime-screenshot.png
             identify -format "Captured %wx%h\\n" assets/runtime-screenshot.png
             kill "$pid" || true
             if [ ! -s assets/runtime-screenshot.png ]; then
